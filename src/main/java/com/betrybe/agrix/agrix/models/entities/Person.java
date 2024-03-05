@@ -31,6 +31,9 @@ public class Person {
   public Person() {
   }
 
+  /**
+   * Constructor for a person.
+   */
   public Person(Long id, String username, String password, Role role) {
     this.id = id;
     this.username = username;
