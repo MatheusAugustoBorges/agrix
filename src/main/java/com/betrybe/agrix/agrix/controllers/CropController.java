@@ -55,7 +55,7 @@ public class CropController {
    * Method used to get all farms from the database.
    */
   @GetMapping()
-  @Secured({"ROLE_ADMIN", "ROLE_MANAGER"})q
+  @Secured({"ROLE_ADMIN", "ROLE_MANAGER"})
   public List<CropDto> getAllCrops() {
     return cropService.getAllCrops().stream()
         .map(CropModelDtoConverter::cropToCropDto)
