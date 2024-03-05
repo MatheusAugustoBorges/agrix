@@ -16,6 +16,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -54,7 +55,8 @@ public class CropController {
    * Method used to get all farms from the database.
    */
   @GetMapping()
-  public List<CropDto> getAllFarms() {
+  @Secured({"ROLE_ADMIN", "ROLE_MANAGER"})q
+  public List<CropDto> getAllCrops() {
     return cropService.getAllCrops().stream()
         .map(CropModelDtoConverter::cropToCropDto)
         .collect(Collectors.toList());
@@ -64,7 +66,7 @@ public class CropController {
    * Method used to get farm by id from the database.
    */
   @GetMapping("/{cropId}")
-  public ResponseEntity<CropDto> getFarmById(@PathVariable Long cropId) {
+  public ResponseEntity<CropDto> getCropById(@PathVariable Long cropId) {
     Crop crop = cropService.getCropById(cropId);
     return ResponseEntity.status(HttpStatus.OK).body(cropToCropDto(crop));
   }
