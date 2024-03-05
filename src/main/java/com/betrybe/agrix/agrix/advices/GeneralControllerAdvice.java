@@ -3,6 +3,7 @@ package com.betrybe.agrix.agrix.advices;
 import com.betrybe.agrix.agrix.exceptions.CropNotFoundException;
 import com.betrybe.agrix.agrix.exceptions.FarmNotFoundException;
 import com.betrybe.agrix.agrix.exceptions.FertilizerNotFoundException;
+import com.betrybe.agrix.agrix.exceptions.PersonNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -36,6 +37,14 @@ public class GeneralControllerAdvice {
   @ExceptionHandler(FertilizerNotFoundException.class)
   public ResponseEntity<String> handleFertilizerNotFoundException(FertilizerNotFoundException e) {
     return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Fertilizante não encontrado!");
+  }
+
+  /**
+   * This method handles an exception for PersonNotFoundException.
+   */
+  @ExceptionHandler(PersonNotFoundException.class)
+  public ResponseEntity<String> handlePersonNotFoundException(PersonNotFoundException e) {
+    return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Pessoa não encontrada!");
   }
 
   /**

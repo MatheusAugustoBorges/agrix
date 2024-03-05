@@ -1,8 +1,8 @@
-package com.betrybe.agrix.ebytr.staff.service;
+package com.betrybe.agrix.agrix.services;
 
-import com.betrybe.agrix.ebytr.staff.entity.Person;
-import com.betrybe.agrix.ebytr.staff.exception.PersonNotFoundException;
-import com.betrybe.agrix.ebytr.staff.repository.PersonRepository;
+import com.betrybe.agrix.agrix.models.entities.Person;
+import com.betrybe.agrix.agrix.exceptions.PersonNotFoundException;
+import com.betrybe.agrix.agrix.models.repositories.PersonRepository;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
