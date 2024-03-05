@@ -47,13 +47,4 @@ public class GeneralControllerAdvice {
     return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Pessoa não encontrada!");
   }
 
-  /**
-   * This method handles an exception for INTERNAL_SERVER_ERROR.
-   */
-  @ExceptionHandler(Exception.class)
-  public ResponseEntity<String> handleGenericException(Exception e) {
-    return ResponseEntity
-        .status(HttpStatus.INTERNAL_SERVER_ERROR)
-        .body("Erro interno!");
-  }
 }
