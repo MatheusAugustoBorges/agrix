@@ -21,6 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -73,7 +74,8 @@ public class FarmController {
    * Method used to get all farms from the database.
    */
   @GetMapping()
-  @Secured({"ROLE_ADMIN", "ROLE_MANAGER", "ROLE_USER"})
+  //  @Secured({"ROLE_ADMIN", "ROLE_MANAGER", "ROLE_USER"})
+  @PreAuthorize("hasRole('ADMIN') or hasRole('MANAGER') or hasRole('USER')")
   public List<FarmDto> getAllFarms() {
     //    return farmService.getAllFarms().stream()
     //        .map(farm -> new FarmDto(farm.getId(), farm.getName(), farm.getSize()))
